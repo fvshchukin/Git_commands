@@ -307,8 +307,116 @@ Git — система контроля версий (файлов). Что-то
   `"gif")        echo "Oh, it's a giphy!"               ;;`
 
  `*)            echo "Woops! It's not image!"          ;;`
- 
+
 `esac`
+
+# Циклы
+
+В **Bash** есть четыре типа циклов: **for, while, until и select**.
+
++ **FOR**
+
+`# 1`
+
+`for arg in elem1 elem2 ... elemN`
+
+`do`
+
+  `# statements`
+
+`done`
+
+`# 2`
+
+`for i in {1..5}; do echo $i; done`
+
+`# 3`
+
+`for (( i = 0; i < 10; i++ )); do`
+
+  `echo $i`
+
+`done``
+
+`# 4`
+
+`for FILE in $HOME/*.bash; do`
+
+  `mv "$FILE" "${HOME}/scripts"`
+
+  `chmod +x "${HOME}/scripts/${FILE}"`
+
+`done`
+
+* **WHILE** - Цикл **while** проверяет условие и перебирает последовательность команд, пока это условие истинно. Условие - это не что иное, как первичное значение, используемое в условиях **if..then**.
+
+`while [[ condition ]]`
+
+`do`
+
+  `# statements`
+
+`done`
+
+`# Squares of numbers from 0 through 9`
+
+`x=0`
+
+`while [[ $x -lt 10 ]]; do # value of x is less than 10`
+
+  `echo $(( x * x ))`
+
+  `x=$(( x + 1 )) # increase x`
+
+`done`
+
+- **UNTIL** - Цикл **until** - полная противоположность цикла **while**. Какое-то время он проверяет условие теста, но продолжает цикл, пока это условие ложно
+
+`until [[ condition ]]; do`
+
+  `#statements`
+
+`done`
+
+В этом примере пользователю задается вопрос, какой диспетчер пакетов он хотел бы использовать. Затем он спросит, какой пакет мы хотим установить, и, наконец, приступит к его установке.
+
+`PS3="Choose the package manager: "`
+
+`select ITEM in bower npm gem pip`
+
+`do`
+
+  `echo -n "Enter the package name: " && read PACKAGE`
+
+  `case $ITEM in`
+
+    `bower) bower install $PACKAGE ;;`
+
+    `npm)   npm   install $PACKAGE ;;`
+
+    `gem)   gem   install $PACKAGE ;;`
+
+    `pip)   pip   install $PACKAGE ;;`
+
+  `esac`
+
+  `break # avoid infinite loop`
+
+`done`
+
+* **LOOP CONTROL**- Бывают ситуации, когда нам нужно остановить цикл до его нормального завершения или перешагнуть через итерацию. В этих случаях мы можем использовать встроенные в оболочку операторы break и continue.
+
+Оператор *break* используется для выхода из текущего цикла до его завершения Оператор continue проходит одну итерацию
+
+`for (( i = 0; i < 10; i++ )); do`
+
+  `if [[ $(( i % 2 )) -eq 0 ]]; then continue; fi`
+
+  `echo $i`
+
+`done`
+
+
 
 
 
