@@ -37,13 +37,17 @@ Git — система контроля версий (файлов). Что-то
 
 ## Настройки
 
-Перед началом работы нужно выполнить некоторые настройки:
+**Перед началом работы нужно выполнить некоторые настройки:**
 
-`git config --global user.name "Your Name" # указать имя, которым будут подписаны коммиты`
-`git config --global user.email "e@w.com"  # указать электропочту, которая будет в описании коммитера
-`
-`git config --global core.autocrlf true # Включит в преобразование окончаний строк из CRLF в LF`
-И
-`git config --global core.safecrlf true`
-`git config -global core.editor vim (nano, code, pstorm, и т.д.)`
+*`git config --global user.name "Your Name" # указать имя, которым будут подписаны коммиты`*
+
+*`git config --global user.email "e@w.com"  # указать электропочту, которая будет в описании коммитера`*
+
+*`git config --global core.autocrlf true # Включит в преобразование окончаний строк из CRLF в LF`*
+
+**И**
+
+*`git config --global core.safecrlf true`*
+
+*`git config -global core.editor vim (nano, code, pstorm, и т.д.)`*
 
